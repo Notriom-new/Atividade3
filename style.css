@@ -1,0 +1,220 @@
+/* Resets & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0f172a;
+    color: #e2e8f0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================================
+   COMPROVANDO O USO DE CLASSES E COMBINADORES EM CSS
+   ======================================================== */
+
+
+/* 1. Combinador Descendente (espaço) */
+/* Seleciona TODOS os 'a' que são descendentes (filhos, netos) de '.nav-container' */
+.nav-container a {
+    text-decoration: none;
+    color: #cbd5e1;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+/* 2. Combinador Filho Direto (>) */
+/* Seleciona APENAS os elementos 'li' que são filhos direitos de '.nav-list' */
+.nav-list > li {
+    list-style: none;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+/* Styling nav container com Classes */
+.main-header {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #334155;
+    padding: 1.25rem 2.5rem;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.7rem;
+    color: #f8fafc;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.logo .highlight {
+    color: #3b82f6;
+}
+
+.nav-list {
+    display: flex;
+    gap: 2.5rem;
+}
+
+/* Animações e Hovers usando interações */
+.nav-container a:hover,
+.nav-container a.active {
+    color: #3b82f6;
+}
+
+.nav-list > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #3b82f6;
+    transition: width 0.3s ease;
+}
+
+.nav-list > li > a:hover::after,
+.nav-list > li > a.active::after {
+    width: 100%;
+}
+
+/* Layout Secundário */
+.hero-section, .about-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5rem 2rem;
+    gap: 3.5rem;
+}
+
+.content-wrapper {
+    max-width: 800px;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #f8fafc;
+    margin-bottom: 1.5rem;
+}
+
+/* 3. Combinador Irmão Geral (~) */
+/* Seleciona QUALQUER parágrafo (p) que venha após um 'h2' no mesmo nível hierárquico dentro de '.content-wrapper' */
+.content-wrapper h2 ~ p {
+    font-size: 1.25rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Buttons (Uso extensivo de classes combinadas) */
+.btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+.primary-btn {
+    background: #3b82f6;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.primary-btn:hover {
+    background: #2563eb;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: #3b82f6;
+    border: 2px solid #3b82f6;
+}
+
+.secondary-btn:hover {
+    background: rgba(59, 130, 246, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Features */
+.features-wrapper {
+    display: flex;
+    gap: 2.5rem;
+    max-width: 1000px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(5px);
+    border: 1px solid #334155;
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+    width: 340px;
+    text-align: left;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    border-color: #3b82f6;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.feature-card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 4. Combinador Irmão Adjacente (+) */
+/* Seleciona APENAS o primeiro 'p' que seja irmão imediatamente após um 'h2' em '.feature-card' */
+.feature-card h2 + p {
+    color: #cbd5e1;
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-top: 1px dashed #475569;
+    padding-top: 1rem;
+}
+
+.highlight-text {
+    color: #38bdf8 !important;
+    font-weight: 700;
+}
